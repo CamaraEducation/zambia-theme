@@ -9,6 +9,18 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 %>
 
+<ol class="user">
+  <li>  
+    <a>
+      <span>
+        <img alt="Zambia Flag" src="/static/${settings.DEFAULT_SITE_THEME}/images/zambiaflag.png" title="Zambia Flag" height="45px">
+      </span> 
+    </a>
+
+  </li>
+
+</ol>
+
 <ol class="left nav-global list-inline authenticated">
   <%block name="navigation_global_links_authenticated">
     % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
@@ -51,11 +63,4 @@ from django.utils.translation import ugettext as _
       </a>
     </li>
   </ol>
-
-   <a>
-  <span>
-            <img alt="Zambia Flag" src="/static/${settings.DEFAULT_SITE_THEME}/images/zambiaflag.png" title="Zambia Flag" height="55px">
-
-          </span>
-</a>
 % endif

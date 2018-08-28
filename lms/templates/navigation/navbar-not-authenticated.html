@@ -9,18 +9,6 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 %>
 
-<ol class="user">
-  <li>  
-    <a>
-      <span>
-        <img alt="Ireland Flag" src="/static/${settings.DEFAULT_SITE_THEME}/images/irelandflag.png" title="Ireland Flag" height="45px">
-      </span> 
-    </a>
-
-  </li>
-
-</ol>
-
 <ol class="left list-inline nav-global">
   <%block name="navigation_global_links">
     % if static.get_value('ENABLE_MKTG_SITE', settings.FEATURES.get('ENABLE_MKTG_SITE', False)):
