@@ -1,6 +1,5 @@
 <%page expression_filter="h"/>
 <%! from django.utils.translation import ugettext as _ %>
-
 <%inherit file="../main.html" />
 
 <%block name="pagetitle">${_("Contact")}</%block>
@@ -8,34 +7,28 @@
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="container about">
         <h1>${_("Contact")}</h1>
-        <p>Hi, already an edX student? Do you have questions, suggestions or issues?</p>
-        <p>Not a student yet and have a general question about edX? Please visit our FAQ’s. Still need help or
+        <p>Hi, already a Camara learning academy, Zambia student? Do you have questions, suggestions or issues?</p>
+        <p>Not a student yet and have a general question about Camara learning academy? Please visit our FAQ’s. Still need help or
             want to give us general feedback (which we want), contact us below.</p>
         <p></p>
-
-
-
-
-
         <div class="group group-form group-form-requiredinformation">
             <form action="" method="post" id="webform-client-form-285" accept-charset="UTF-8">
-
                 <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}">
                 <ol class="list-input">
 
                     <li class="field required text">
                         <label for="id_email">Your Email:</label>
-                        <input type="text" name="email" id="id_email" required>
+                        <input type="text" name="email" id="id_email">
                     </li>
 
                     <li class="field required text">
                         <label for="id_full_name">Full name:</label>
-                        <input id="id_full_name" type="text" name="full_name" maxlength="255" required>
+                        <input id="id_full_name" type="text" name="full_name" maxlength="255">
                     </li>
 
                     <li class="field text">
                         <label for="id_phone">Phone:</label>
-                        <input id="id_phone" type="text" name="phone" maxlength="255" required>
+                        <input id="id_phone" type="text" name="phone" maxlength="255">
                     </li>
 
                     <li class="field text">
@@ -69,7 +62,7 @@
                     <li class="field required text">
                         <label for="id_message">Message: </label>
                         <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
-                            <textarea id="id_message" rows="5" name="message" required></textarea>
+                            <textarea id="id_message" rows="5" name="message"></textarea>
                             <div class="grippie"></div>
                         </div>
                     </li>
@@ -81,7 +74,5 @@
 
 
             </form>
-
-        </div>
     </section>
 </main>
