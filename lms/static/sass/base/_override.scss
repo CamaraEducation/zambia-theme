@@ -1,7 +1,7 @@
 .header-global {
     height: auto;
     background: $header-color;
-    padding: 18px 10px;
+    // padding: 18px 10px;
     position: relative;
     box-sizing: border-box;
 
@@ -560,7 +560,7 @@ body .confirm-enrollment button[type="submit"],
 body .wiki-wrapper section.wiki .btn ,
 body .wiki-wrapper section.wiki .btn:not(:disabled),
 body .wiki-wrapper section.wiki .btn:not(:disabled)
- {
+{
     text-shadow: none;
     box-shadow: none;
     border: none;
@@ -631,7 +631,7 @@ body .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.
 }
 
 .courses-container .courses .course {
-    border-bottom: 3px solid #82bc00;
+    border-bottom: 3px solid #ffffff;
 
     .course-image .cover-image .learn-more {
         background-color: transparent;
@@ -809,12 +809,12 @@ body .wmd-prompt-dialog .btn-brand:focus {
                 line-height: 1.2;
                 color: #fff;
                 text-align: center;
-                font-weight: bold;
+                // font-weight: bold;
                 text-shadow: 0px 2px 0px rgba(77, 77, 77, 0.34);
                 //margin-bottom: 50px;
 
                 @media screen and (min-width: 760px) {
-                    font-size: 52px;
+                    font-size: 45px;
                 }
             }
 
@@ -1758,7 +1758,7 @@ div.dropdown-menu-container .dropdown-menu .dropdown-item a {
             display: flex;
         }
         li a {
-            background: #82bc00;
+            background: #ffffff;
             box-shadow: none;
             color: #ffe !important;
             border: none;
@@ -1770,7 +1770,7 @@ div.dropdown-menu-container .dropdown-menu .dropdown-item a {
             margin: 0 0 15px;
             border-radius: 2px;
             &:hover {
-                background: darken(#82bc00,20%);
+                background: darken(#ffffff,20%);
             }
         }
     }
@@ -1803,13 +1803,15 @@ body .wiki-wrapper {
 
 body .header-global .logo img,
 .wrapper-footer footer#footer-openedx .wrapper-logo img {
-    width: 256px;
+    width: 150px;
+    padding-top: 15px !important;
 }
 
 .home > header .title > .heading-group h1 {
-    background: rgba(227, 236, 211, 0.5);
-    border-radius: 6px; 
-    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.125), inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+    background: rgba(45, 45, 43, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 1px 10px 0 rgba(45, 45, 43, 0.1),inset 0 0 0 1px rgba(45, 45, 43, 0.1);
+    
 }
 .user-filter {
     display: none;
@@ -1918,12 +1920,12 @@ body {
     }
 }
 
-    
+
 body .header-global .nav-courseware {
     margin-top: 14px
 }
 div.dropdown-menu-container .dropdown-menu .dropdown-item a:hover {
-    color: darken(#82bc00, 20%);
+    color: darken(#ffffff, 20%);
 }
 
 .wiki-wrapper section.wiki .article-functions .see-children a:hover, .wiki-wrapper section.wiki .article-functions .see-children div.info-wrapper section.handouts ol li div.hitarea:hover+h4, div.info-wrapper section.handouts ol li .wiki-wrapper section.wiki .article-functions .see-children div.hitarea:hover+h4, .wiki-wrapper section.wiki .article-functions .see-children div.info-wrapper section.handouts ol li div.hitarea:focus+h4, div.info-wrapper section.handouts ol li .wiki-wrapper section.wiki .article-functions .see-children div.hitarea:focus+h4, .wiki-wrapper section.wiki .article-functions .see-children a:focus {
@@ -1941,7 +1943,7 @@ body .header-global .user>.primary:last-child>a.shopping-cart {
         color: $theme-link-hover;
     }
     @media screen and (max-width: 768px) {
-        
+
     }
 }
 body .wiki-wrapper section.wiki .btn:active:not(:disabled), body .wiki-wrapper section.wiki .btn:focus:not(:disabled) {
@@ -1987,7 +1989,7 @@ body .home>header {
         min-height: 300px;
     }
     @media screen and (min-width: 760px) {
-        min-height: 520px;
+        min-height: 400px;
     }
 }
 .home>header .title>.heading-group h1 {
