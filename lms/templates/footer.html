@@ -1,0 +1,160 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+  from branding.api import get_footer
+  from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+%>
+  <% footer = get_footer(is_secure=is_secure) %>
+    <%namespace name='static' file='static_content.html'/>
+
+% if uses_bootstrap:
+  <div class="container-fluid wrapper-footer">
+    <footer>
+      <div class="row">
+        <div class="col-md-9">
+          <nav class="navbar site-nav navbar-toggleable-sm navbar-light" aria-label="${_('About')}">
+            <ul class="navbar-nav">
+              % for item_num, link in enumerate(footer['navigation_links'], start=1):
+                <li class="nav-item">
+                  <a class="nav-link" href="${link['url']}">${link['title']}</a>
+                </li>
+              % endfor
+            </ul>
+          </nav>
+
+          ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
+          <p class="copyright">
+            <div>Camara Education Inc. is a registered 501 (c)3 in the US</div><br>
+            <div> Camara Learning Limited is registered with the Charities Commission (1135540) in England</div><br>
+            <div>Camara Education Limited is registered with the Revenue Commissioners (CHY 16922) in Ireland</div>
+          </p>
+
+          <nav class="navbar legal-nav navbar-toggleable-sm navbar-light" aria-label="${_('Legal')}">
+            <ul class="navbar-nav">
+              % for item_num, link in enumerate(footer['legal_links'], start=1):
+                <li class="nav-item">
+                  <a class="nav-link" href="${link['url']}">${link['title']}</a>
+                </li>
+              % endfor
+              <li class="nav-item">
+                <a class="nav-link" href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-md-3">
+          ## Please leave this link and use one of the logos provided
+          ## The OpenEdX link may be hidden when this view is served
+          ## through an API to partner sites (such as marketing sites or blogs),
+          ## which are not technically powered by Open edX.
+          % if not hide_openedx_link:
+            <div class="footer-about-openedx">
+              <p>
+                <a href="${footer['openedx_link']['url']}" target="_blank">
+                  <img src="/static/${settings.FEATURES.get('ZAMBIA_SITE_THEME', settings.DEFAULT_SITE_THEME)}/images/logo.png" alt="${footer['openedx_link']['title']}" width="140" />
+                </a>
+              </p>
+            </div>
+          % endif
+        </div>
+      </div>
+    </footer>
+  </div>
+% else:
+  <div class="wrapper wrapper-footer">
+    <footer id="footer-openedx" class="grid-container"
+      ## When rendering the footer through the branding API,
+      ## the direction may not be set on the parent element,
+      ## so we set it here.
+      % if bidi:
+        dir=${bidi}
+      % endif
+    >
+      <div class="colophon">
+        
+        <nav class="nav-colophon" aria-label="${_('About')}">
+          <ol>
+              <li>
+                <a href="${marketing_link('ROOT')}">${_("Home")}</a>
+              </li>
+              <li class="nav-colophon-01">
+                <a href="/about">${_("About Us")}</a>
+              </li>
+              <li class="nav-colophon-02">
+                <a href="/privacy">${_("Privacy Policy")}</a>
+              </li>
+              <li class="nav-colophon-03">
+                <a href="/tos">${_("Terms of Service")}</a>
+              </li>
+              <li class="nav-colophon-03">
+                <a href="/contact">${_("Contact")}</a>
+              </li>
+              <li>
+              <a href="http://deveducation.camara.cam" target="_blank">Global</a>
+            </li>
+          </ol>
+        </nav>
+        <div class="footer-logo-holder">
+          <!--<div class="wrapper-logo">-->
+            <!--<p>-->
+              <!--<a href="https://learn.camara.org/" target="_blank">-->
+                <!--<img alt="organization logo" src="/static/${settings.FEATURES.get('ZAMBIA_SITE_THEME', settings.DEFAULT_SITE_THEME)}/images/logo.png">-->
+              <!--</a>-->
+            <!--</p>-->
+          <!--</div>-->
+          <ul class="icon-list">
+            <li class="icon-list_item"><a href="https://www.facebook.com/camarazambia/" target="_blank" class="icon-list_link icon-list_link__facebook">facebook</a></li>
+            <li class="icon-list_item"><a href="https://www.instagram.com/camaraeducation" target="_blank" class="icon-list_link icon-list_link__instagramm">instagramm</a></li>
+            <li class="icon-list_item"><a href="https://twitter.com/camaraeducation" target="_blank" class="icon-list_link icon-list_link__twitter">twitter</a></li>
+            <li class="icon-list_item"><a href="https://www.linkedin.com/company/camara-education-ltd-/" target="_blank" class="icon-list_link icon-list_link__linkedin">linkedin</a></li>
+          </ul>
+          % if not hide_openedx_link:
+          <div class="footer-about-openedx">
+            <p>
+              <a href="${footer['openedx_link']['url']}" target="_blank">
+                <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
+              </a>
+            </p>
+          </div>
+          % endif
+        </div>
+        % if context.get('include_language_selector', footer_language_selector_is_enabled()):
+            <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
+        % endif
+
+        
+
+        ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
+        <p class="copyright">
+            Camara Education Inc. is a registered 501 (c)3 in the US<br>
+            Camara Learning Limited is registered with the Charities Commission (1135540) in England<br>
+            Camara Education Limited is registered with the Revenue Commissioners (CHY 16922) in Ireland
+        </p>
+
+       
+      </div>
+
+      ## Please leave this link and use one of the logos provided
+      ## The OpenEdX link may be hidden when this view is served
+      ## through an API to partner sites (such as marketing sites or blogs),
+      ## which are not technically powered by OpenEdX.
+      
+    </footer>
+  </div>
+% endif
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif
+% if settings.FEATURES.get('ENABLE_COOKIE_CONSENT', False):
+  <%include file="widgets/cookie-consent.html" />
+% endif
